@@ -10,6 +10,7 @@ L             50
 C             100
 D             500
 M             1000
+
 For example, 2 is written as II in Roman numeral, just two ones added together. 12 is written as XII, 
 which is simply X + II. The number 27 is written as XXVII, which is XX + V + II.
 
@@ -22,18 +23,18 @@ X can be placed before L (50) and C (100) to make 40 and 90.
 C can be placed before D (500) and M (1000) to make 400 and 900.
 Given a roman numeral, convert it to an integer.
 
- 
-
 Example 1:
 
 Input: s = "III"
 Output: 3
 Explanation: III = 3.
+
 Example 2:
 
 Input: s = "LVIII"
 Output: 58
 Explanation: L = 50, V= 5, III = 3.
+
 Example 3:
 
 Input: s = "MCMXCIV"
@@ -46,6 +47,7 @@ Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
  * @return {number}
  */
 var romanToInt = function(s) {
+  // Define an object romanValues that maps each Roman numeral symbol to its corresponding integer value
   const romanValues = {
        "I": 1,
        "V": 5,
@@ -56,13 +58,17 @@ var romanToInt = function(s) {
        "M": 1000
    };
    let result = 0;
+   // Loop through each symbol in the input string s
    for (let i = 0; i < s.length; i++) {
        const current = romanValues[s[i]];
        const next = romanValues[s[i + 1]];
+       // checks if there is a next symbol and if that next symbol has a larger value than the current symbol
+       // If so, it subtracts the value of the current symbol from the value of the next symbol and adds the result
        if (next && current < next) {
            result += next - current;
            i++;
        } else {
+        // Otherwise, it simply adds the value of the current symbol to result
            result += current;
        }
    }
