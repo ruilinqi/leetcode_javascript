@@ -39,11 +39,13 @@ Both list1 and list2 are sorted in non-decreasing order.
  *     this.next = (next===undefined ? null : next)
  * }
  */
+
 /**
  * @param {ListNode} list1
  * @param {ListNode} list2
  * @return {ListNode}
  */
+
 var mergeTwoLists = function(list1, list2) {
   let dummy = new ListNode(-1);
   let current = dummy;
@@ -63,3 +65,6 @@ var mergeTwoLists = function(list1, list2) {
 
   return dummy.next;
 };
+// Time complexity of O(m+n), where m and n are the lengths of l1 and l2 respectively, 
+// since we need to iterate through both lists once.
+// The space complexity is O(1), since we only use a constant amount of extra space.
