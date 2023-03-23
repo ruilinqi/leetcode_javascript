@@ -32,8 +32,10 @@ Constraints:
  * @return {boolean}
  */
 var isPalindrome = function(x) {
+  // Convert integer to string
   const str = x.toString();
 
+  // Use two pointers to compare the characters from the beginning and the end of the string
   let left = 0;
   let right = str.length - 1;
   while (left < right) {
