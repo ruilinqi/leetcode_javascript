@@ -25,9 +25,13 @@ Output: 4
  * @param {number} target
  * @return {number}
  */
+// The function implements binary search algorithm to find the index of the target in the nums array
+// nums is a sorted array of distinct integers
+// target is the integer we want to search or insert in the nums array.
 var searchInsert = function(nums, target) {
     let left = 0;
     let right = nums.length - 1;
+    // A while loop that runs until the left index is greater than the right index
     while (left <= right) {
         const mid = Math.floor((left + right) / 2);
         if (nums[mid] === target) {
