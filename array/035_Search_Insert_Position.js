@@ -42,5 +42,6 @@ var searchInsert = function(nums, target) {
             right = mid - 1;
         }
     }
+    // If the target is not found in the array, it returns the left index as the index where it would be inserted
     return left;
 };
