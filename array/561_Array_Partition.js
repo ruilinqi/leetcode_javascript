@@ -23,3 +23,27 @@ Explanation: The optimal pairing is (2, 1), (2, 5), (6, 6). min(2, 1) + min(2, 5
 min(6, 6) = 1 + 2 + 6 = 9.
  * 
  */
+
+
+/**
+ * Answer:
+ * @param {number[]} nums
+ * @return {number}
+ */
+var arrayPairSum = function(nums) {
+  // pseduo code:
+  // sort the numbers from small to big
+  // get the min value of the pair
+  // find the sum of min
+
+
+  // sort numbers // [1,3,4,2] => [1,2,3,4]
+  nums.sort((a,b) => a - b);
+  
+  var sum = 0;
+  // Iterate over the sorted array and add the minimum of each pair to the sum
+  for (let i = 0; i<nums.length; i+=2) {
+      sum += nums[i];
+  }
+  return sum;
+};
