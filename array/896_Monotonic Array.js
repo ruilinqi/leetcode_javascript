@@ -22,3 +22,23 @@ Input: nums = [1,3,2]
 Output: false
  */
 
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var isMonotonic = function(nums) {
+  // loop i and i+1
+  // in the loop, compare elements
+
+  var increase = true;
+  var decrease = true;
+  for (var i=1; i<nums.length; i++) {
+      if (nums[i] < nums[i-1]) {
+          increase = false;
+      }
+      if (nums[i] > nums[i-1]) {
+          decrease = false;
+      }
+  }
+  return increase || decrease;
+};
