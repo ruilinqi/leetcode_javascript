@@ -27,3 +27,8 @@ Array.prototype.last = function() {
  * const arr = [1, 2, 3];
  * arr.last(); // 3
  */
+const nums = [1, 2, 3];
+console.log(nums.last()); // Output: 3
+
+const emptyArr = [];
+console.log(emptyArr.last()); // Output: -1
