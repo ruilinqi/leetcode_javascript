@@ -23,6 +23,7 @@ initially, the value is init=0.
 (3) + nums[2] = 6
 (6) + nums[3] = 10
 The final answer is 10.
+
 Example 2:
 
 Input: 
@@ -37,6 +38,7 @@ initially, the value is init=100.
 (105) + nums[2]^2 = 114
 (114) + nums[3]^2 = 130
 The final answer is 130.
+
 Example 3:
 
 Input: 
@@ -46,3 +48,17 @@ init = 25
 Output: 25
 Explanation: For empty arrays, the answer is always init.
  */
+
+/**
+ * @param {number[]} nums
+ * @param {Function} fn
+ * @param {number} init
+ * @return {number}
+ */
+var reduce = function(nums, fn, init) {
+  var result = init;
+  for (var i = 0; i < nums.length; i++) {
+      result = fn(result, nums[i]);
+  }
+  return result;
+};
