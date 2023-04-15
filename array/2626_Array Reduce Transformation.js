@@ -55,6 +55,8 @@ Explanation: For empty arrays, the answer is always init.
  * @param {number} init
  * @return {number}
  */
+// It initializes a val variable to the initial value and then loops through the array, 
+// applying the reducer function to the current value and the current array element. The final value is returned.
 var reduce = function(nums, fn, init) {
   var result = init;
   for (var i = 0; i < nums.length; i++) {
