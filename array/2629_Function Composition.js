@@ -35,3 +35,15 @@ Output: 42
 Explanation:
 The composition of zero functions is the identity function
  */
+
+function composeFunctions(functions, x) {
+  if (functions.length === 0) {
+    return x;
+  }
+  
+  const composedFn = functions.reduceRight((acc, fn) => {
+    return (input) => fn(acc(input));
+  }, (input) => input);
+  
+  return composedFn(x);
+}
