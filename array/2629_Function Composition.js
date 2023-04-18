@@ -36,14 +36,29 @@ Explanation:
 The composition of zero functions is the identity function
  */
 
-function composeFunctions(functions, x) {
-  if (functions.length === 0) {
-    return x;
-  }
+/**
+ * @param {Function[]} functions
+ * @return {Function}
+ */
+var compose = function(functions) {
+  // If the array is empty, return the identity function
+      if (functions.length === 0) {
+          return function(x) { return x; };
+      }
   
-  const composedFn = functions.reduceRight((acc, fn) => {
-    return (input) => fn(acc(input));
-  }, (input) => input);
+      // Otherwise, return the composed function
+    return function(x) {
+          // Start with the input value
+          var result = x;
+          // Evaluate each function from right to left
+          for (var i = functions.length - 1; i >= 0; i--) {
+              result = functions[i](result);
+          }
+          return result;
+      }
+  };
   
-  return composedFn(x);
-}
+  /**
+   * const fn = compose([x => x + 1, x => 2 * x])
+   * fn(4) // 9
+   */
