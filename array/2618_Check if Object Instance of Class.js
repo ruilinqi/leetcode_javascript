@@ -58,3 +58,30 @@ var checkIfInstanceOf = function(obj, classFunction) {
   obj = Object.getPrototypeOf(obj);
   return checkIfInstanceOf(obj, classFunction);
 };
+
+// Solution 2:
+// It does not work for Number such as input is "() => checkIfInstanceOf(5, Number)"
+// because the current implementation only checks if the object is an instance of the class or any of 
+// its superclasses in the prototype chain, but it does not check if the object has access to the class's 
+// methods.
+var checkIfInstanceOf = function(obj, classFunction) {
+  // Check if the classFunction is a function
+  if (typeof classFunction !== 'function') {
+    throw new Error('The second argument must be a class function.');
+  }
+
+  // Check if obj is an object
+  if (typeof obj !== 'object') {
+    return false;
+  }
+
+  // Check if obj is an instance of classFunction or any of its superclasses
+  let currentClass = Object.getPrototypeOf(obj);
+  while (currentClass !== null) {
+    if (currentClass === classFunction.prototype) {
+      return true;
+    }
+    currentClass = Object.getPrototypeOf(currentClass);
+  }
+  return false;
+};
