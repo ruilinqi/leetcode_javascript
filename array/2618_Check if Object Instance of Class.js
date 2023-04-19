@@ -39,3 +39,22 @@ Explanation: 5 is a Number. Note that the "instanceof" keyword would return fals
 still considered an instance of Number because it accesses the Number methods. For example "toFixed()".
  * 
  */
+
+/**
+ * @param {any} object
+ * @param {any} classFunction
+ * @return {boolean}
+ */
+// Solution 1:
+var checkIfInstanceOf = function(obj, classFunction) {
+  //if object became null return false
+  if (obj == null) {
+      return false;
+  }
+  //if found return true             
+  if (obj.constructor === classFunction) {
+      return true;
+  }
+  obj = Object.getPrototypeOf(obj);
+  return checkIfInstanceOf(obj, classFunction);
+};
