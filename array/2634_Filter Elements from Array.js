@@ -30,3 +30,20 @@ Explanation:
 Falsey values such as 0 should be filtered out
  * 
  */
+
+/**
+ * @param {number[]} arr
+ * @param {Function} fn
+ * @return {number[]}
+ */
+var filter = function(arr, fn) {
+  const result = [];
+  for (let i = 0; i <arr.length; i++) {
+      // If the filtering function returns a truthy value (i.e. not false, null, undefined, 0, NaN, or an empty string)
+      if (fn(arr[i], i)) {
+          // the element is added to the result
+          result.push(arr[i]);
+      }
+  }
+  return result;
+};
