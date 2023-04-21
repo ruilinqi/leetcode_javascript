@@ -61,3 +61,26 @@ Output: {"rejected":"Error","time":0}
 Explanation:
 The function immediately throws an error.
  */
+
+/**
+ * @param {Function} fn
+ * @param {number} t
+ * @return {Function}
+ */
+var timeLimit = function(fn, t) {
+	return async function(...args) {
+        const startTime = Date.now();
+        const result = await Promise.race([
+            fn(...args),
+            new Promise((_, reject) => setTimeout(() => reject('Time Limit Exceeded'), t))        ]
+        );
+        const elapsedTime = Date.now() - startTime;
+        return { resolved: result, time: elapsedTime };
+    }
+};
+
+
+/**
+ * const limited = timeLimit((t) => new Promise(res => setTimeout(res, t)), 100);
+ * limited(150).catch(console.log) // "Time Limit Exceeded" at t=100ms
+ */
