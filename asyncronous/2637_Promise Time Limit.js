@@ -67,15 +67,25 @@ The function immediately throws an error.
  * @param {number} t
  * @return {Function}
  */
-var timeLimit = function(fn, t) {
+ // A new async function that takes two arguments
+ // and returns a new function that wraps the original function and limit its
+ // execution time to milliiseconds
+
+ // a wrapper function timeLimit
+ var timeLimit = function(fn, t) {
 	return async function(...args) {
-        const startTime = Date.now();
-        const result = await Promise.race([
-            fn(...args),
-            new Promise((_, reject) => setTimeout(() => reject('Time Limit Exceeded'), t))        ]
-        );
-        const elapsedTime = Date.now() - startTime;
-        return { resolved: result, time: elapsedTime };
+        // return a promise that resolves with the result of execution / rejects with an error
+        const originalFnPromise = fn(...args);
+
+        // create a new promise using setTimeout that will reject with a string after 't' milliseconds
+        const timeoutPromise = new Promise((_, reject) => {
+            setTimeout(() => {
+                reject('Time Limit Exceeded')
+            }, t);
+        })
+        
+        // use 'Promise.race' to wait for either the original promise or the timeout promise
+        return Promise.race([originalFnPromise, timeoutPromise]);
     }
 };
 
