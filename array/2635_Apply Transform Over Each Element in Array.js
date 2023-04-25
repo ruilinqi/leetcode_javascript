@@ -34,6 +34,8 @@ Explanation: The function always returns 42.
  */
 var map = function(arr, fn) {
   let newArray = [];
+  // Loop through each element of the input array. 
+  // For each element, the function applies the fn function to that element and its index (i), and pushes the result to the newArray
   for (let i = 0; i < arr.length; i++) {
       newArray.push(fn(arr[i], i))
   }
