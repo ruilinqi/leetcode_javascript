@@ -26,3 +26,16 @@ Input: arr = [10,20,30], fn = function constant() { return 42; }
 Output: [42,42,42]
 Explanation: The function always returns 42.
  */
+
+/**
+ * @param {number[]} arr
+ * @param {Function} fn
+ * @return {number[]}
+ */
+var map = function(arr, fn) {
+  let newArray = [];
+  for (let i = 0; i < arr.length; i++) {
+      newArray.push(fn(arr[i], i))
+  }
+  return newArray;
+};
