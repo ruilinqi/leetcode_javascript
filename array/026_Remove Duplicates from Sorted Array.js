@@ -42,17 +42,17 @@ It does not matter what you leave beyond the returned k (hence they are undersco
  */
 
 // Solution 1 : Using Array splice method
-const removeDuplicates = (nums) => {
+const removeDuplicates1 = (nums) => {
     for (let i = 0; i < nums.length - 1; i++) {
-        if (nums[i] == nums[i + 1]) {
-            nums.splice(i + 1, 1);
-            i--;
+        if (nums[i] == nums[i + 1]) { // compare the current element with the next element
+            nums.splice(i + 1, 1); // If they are equal, we remove the next element using splice()
+            i--; // Decrement the index i so that we re-check the current index with the new next element
         }
     }
 };
 
 // Solution 2 : For loop with continue
-const removeDuplicates = (nums) => {
+const removeDuplicates2 = (nums) => {
     if (nums.length === 0) return 0;
     let i = 0;
     for (let j = 1; j < nums.length; j++) {
@@ -63,7 +63,7 @@ const removeDuplicates = (nums) => {
 }
 
 // Solution 3 : For loop 
-const removeDuplicates = (nums) => {
+const removeDuplicates3 = (nums) => {
     if (nums.length === 0) return 0;
     let i = 0;
     for (let j = 1; j < nums.length; j++) {
@@ -75,7 +75,7 @@ const removeDuplicates = (nums) => {
 }
 
 // Solution 4 :  While loop
-const removeDuplicates = (nums) => {
+const removeDuplicates4 = (nums) => {
     if (nums.length === 0) return 0;
     let i = 0;
     let j = 1;
