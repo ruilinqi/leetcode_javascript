@@ -40,3 +40,13 @@ Explanation: Your function should return k = 5, with the first five elements of 
 respectively.
 It does not matter what you leave beyond the returned k (hence they are underscores).
  */
+
+// Solution 1 : Using Array splice method
+const removeDuplicates = (nums) => {
+    for (let i = 0; i < nums.length - 1; i++) {
+        if (nums[i] == nums[i + 1]) {
+            nums.splice(i + 1, 1);
+            i--;
+        }
+    }
+};
