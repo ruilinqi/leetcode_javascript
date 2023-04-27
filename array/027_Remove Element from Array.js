@@ -42,3 +42,25 @@ Explanation: Your function should return k = 5, with the first five elements of 
 Note that the five elements can be returned in any order.
 It does not matter what you leave beyond the returned k (hence they are underscores).
  */
+/**
+ * @param {number[]} nums
+ * @param {number} val
+ * @return {number}
+ */
+// Solution 1 : Using Array splice method
+var removeElement = function(nums, val) {
+    for(let i=0;i<nums.length-1;i++){
+        if(nums[i] == val){
+            nums.splice(i,1);
+            i--;
+       }
+    }
+       return nums.length;
+}
+// Solution 2 : Using Array splice method and indexOf method
+var removeElement = function(nums, val) {
+    while(nums.indexOf(val) !== -1) {
+        nums.splice(nums.indexOf(val), 1)
+    }
+    return nums.length;
+};
