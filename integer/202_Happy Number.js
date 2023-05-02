@@ -27,3 +27,27 @@ Example 2:
 Input: n = 2
 Output: false
  */
+
+var isHappy = function(n) {
+  let num = n;
+
+// a function to calculate the product of digits
+  function calculateSum(num) {
+    let sum = 0;
+    while (num != 0) {
+      sum += (num%10) * (num%10)
+      num = Math.trunc(num / 10);
+    }
+    return (sum)
+  }
+
+  let obj = {};
+
+// here I've created an object in which we check and store if
+// object already has the number inside of it
+  while (num !== 1 && !obj[num]) {
+      obj[num] = true;
+      num = calculateSum(num);
+  }
+  return (num === 1 ? true : false);
+};
