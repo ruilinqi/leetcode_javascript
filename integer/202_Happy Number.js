@@ -28,6 +28,7 @@ Input: n = 2
 Output: false
  */
 
+// Solution 1:
 var isHappy = function(n) {
   let num = n;
 
@@ -51,3 +52,19 @@ var isHappy = function(n) {
   }
   return (num === 1 ? true : false);
 };
+
+// Solution 2:
+var isHappy = function(n) {
+  const seen = new Set(); // Keep track of previously seen numbers
+    while (n !== 1 && !seen.has(n)) { // Repeat the process until the number equals 1 or it loops endlessly
+      seen.add(n); // Add n to the set of previously seen numbers
+      let sum = 0;
+      while (n > 0) { // Replace the number by the sum of the squares of its digits
+        const digit = n % 10;
+        sum += digit * digit;
+        n = Math.floor(n / 10);
+      }
+      n = sum; // Assign sum to n for next iteration
+    }
+    return n === 1; // Return true if n is a happy number, and false if not
+}
