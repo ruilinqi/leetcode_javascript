@@ -22,6 +22,7 @@ Output: 0
  * @param {number} num
  * @return {number}
  */
+// Solution 1:
 var addDigits = function(num) {
   while (num > 9) {
   let sum = 0;
@@ -36,3 +37,10 @@ return num;
 
 console.log(addDigits(38)); // Output: 2
 console.log(addDigits(0)); // Output: 0
+
+// Solution 2:
+var addDigits = function(num) {
+  if (isNaN(num) || num === 0) return 0;
+  if (num < 10) return num;
+  return num % 9 === 0 ? 9 : num % 9;
+};
