@@ -25,10 +25,12 @@ Output: [[],[0]]
  */
 var subsets = function(nums) {
   const result = [[]];
+  // two nested for loops iterate through all the elements of nums and all the subsets in the result array, respectively.
   for (let i = 0; i < nums.length; i++) {
     const len = result.length;
     for (let j = 0; j < len; j++) {
       result.push([...result[j], nums[i]]);
+      //create a new array containing the elements of the current subset and the current element of nums
     }
   }
   return result; 
