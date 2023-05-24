@@ -41,7 +41,7 @@ function plusOne(digits) {
   // Increment the last digit by 1
   digits[n - 1] += 1;
   
-  // Handle any carryover
+  // It iterates through the digits from right to left, handling any carryover to the next digit.
   let carry = 0;
   for (let i = n - 1; i >= 0; i--) {
     digits[i] += carry;
@@ -49,7 +49,7 @@ function plusOne(digits) {
     digits[i] %= 10;
   }
   
-  // If there's still a carryover, insert it at the beginning
+  // If there's still a carryover, insert it at the beginning of the array
   if (carry > 0) {
     digits.unshift(carry);
   }
